@@ -28,182 +28,282 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            groupBox1 = new GroupBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            menuStrip1 = new MenuStrip();
+            файлToolStripMenuItem = new ToolStripMenuItem();
+            созданиеToolStripMenuItem = new ToolStripMenuItem();
+            открытиеToolStripMenuItem = new ToolStripMenuItem();
+            сохранениеToolStripMenuItem = new ToolStripMenuItem();
+            сохранениеКакToolStripMenuItem = new ToolStripMenuItem();
+            выходToolStripMenuItem = new ToolStripMenuItem();
+            правкаToolStripMenuItem = new ToolStripMenuItem();
+            текстToolStripMenuItem = new ToolStripMenuItem();
+            пускToolStripMenuItem = new ToolStripMenuItem();
+            справкаToolStripMenuItem = new ToolStripMenuItem();
+            toolStrip1 = new ToolStrip();
+            toolStripButton1 = new ToolStripButton();
+            toolStripButton2 = new ToolStripButton();
+            toolStripButton3 = new ToolStripButton();
+            toolStripButton4 = new ToolStripButton();
+            toolStripButton5 = new ToolStripButton();
+            toolStripButton6 = new ToolStripButton();
+            toolStripButton7 = new ToolStripButton();
+            toolStripButton8 = new ToolStripButton();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
-            groupBox1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            richTextBox1 = new RichTextBox();
+            dataGridView1 = new DataGridView();
+            menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // menuStrip1
             // 
-            button1.Location = new Point(134, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(79, 43);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, текстToolStripMenuItem, пускToolStripMenuItem, справкаToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(982, 33);
+            menuStrip1.TabIndex = 15;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // button2
+            // файлToolStripMenuItem
             // 
-            button2.Location = new Point(221, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(79, 43);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { созданиеToolStripMenuItem, открытиеToolStripMenuItem, сохранениеToolStripMenuItem, сохранениеКакToolStripMenuItem, выходToolStripMenuItem });
+            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            файлToolStripMenuItem.Size = new Size(69, 29);
+            файлToolStripMenuItem.Text = "Файл";
             // 
-            // button3
+            // созданиеToolStripMenuItem
             // 
-            button3.Location = new Point(310, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(79, 43);
-            button3.TabIndex = 3;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            созданиеToolStripMenuItem.Name = "созданиеToolStripMenuItem";
+            созданиеToolStripMenuItem.Size = new Size(244, 34);
+            созданиеToolStripMenuItem.Text = "Создание";
             // 
-            // button4
+            // открытиеToolStripMenuItem
             // 
-            button4.Location = new Point(402, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(79, 43);
-            button4.TabIndex = 4;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            открытиеToolStripMenuItem.Name = "открытиеToolStripMenuItem";
+            открытиеToolStripMenuItem.Size = new Size(244, 34);
+            открытиеToolStripMenuItem.Text = "Открытие";
             // 
-            // button5
+            // сохранениеToolStripMenuItem
             // 
-            button5.Location = new Point(496, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(74, 43);
-            button5.TabIndex = 5;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            сохранениеToolStripMenuItem.Name = "сохранениеToolStripMenuItem";
+            сохранениеToolStripMenuItem.Size = new Size(244, 34);
+            сохранениеToolStripMenuItem.Text = "Сохранение";
             // 
-            // button6
+            // сохранениеКакToolStripMenuItem
             // 
-            button6.Location = new Point(3, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(29, 42);
-            button6.TabIndex = 6;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
+            сохранениеКакToolStripMenuItem.Name = "сохранениеКакToolStripMenuItem";
+            сохранениеКакToolStripMenuItem.Size = new Size(244, 34);
+            сохранениеКакToolStripMenuItem.Text = "Сохранение как";
             // 
-            // button7
+            // выходToolStripMenuItem
             // 
-            button7.Location = new Point(38, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(33, 43);
-            button7.TabIndex = 7;
-            button7.Text = "button7";
-            button7.UseVisualStyleBackColor = true;
+            выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            выходToolStripMenuItem.Size = new Size(244, 34);
+            выходToolStripMenuItem.Text = "Выход";
             // 
-            // button8
+            // правкаToolStripMenuItem
             // 
-            button8.Location = new Point(77, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(43, 43);
-            button8.TabIndex = 8;
-            button8.Text = "button8";
-            button8.UseVisualStyleBackColor = true;
+            правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
+            правкаToolStripMenuItem.Size = new Size(89, 29);
+            правкаToolStripMenuItem.Text = "Правка";
             // 
-            // groupBox1
+            // текстToolStripMenuItem
             // 
-            groupBox1.Controls.Add(tableLayoutPanel1);
-            groupBox1.Dock = DockStyle.Top;
-            groupBox1.Location = new Point(0, 0);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(767, 100);
-            groupBox1.TabIndex = 9;
-            groupBox1.TabStop = false;
+            текстToolStripMenuItem.Name = "текстToolStripMenuItem";
+            текстToolStripMenuItem.Size = new Size(70, 29);
+            текстToolStripMenuItem.Text = "Текст";
             // 
-            // tableLayoutPanel1
+            // пускToolStripMenuItem
             // 
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.ColumnCount = 8;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 46.7289734F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 53.2710266F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 87F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 89F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 94F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 267F));
-            tableLayoutPanel1.Controls.Add(button5, 7, 0);
-            tableLayoutPanel1.Controls.Add(button6, 0, 0);
-            tableLayoutPanel1.Controls.Add(button4, 6, 0);
-            tableLayoutPanel1.Controls.Add(button8, 2, 0);
-            tableLayoutPanel1.Controls.Add(button3, 5, 0);
-            tableLayoutPanel1.Controls.Add(button7, 1, 0);
-            tableLayoutPanel1.Controls.Add(button1, 3, 0);
-            tableLayoutPanel1.Controls.Add(button2, 4, 0);
-            tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            tableLayoutPanel1.Location = new Point(3, 27);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(761, 49);
-            tableLayoutPanel1.TabIndex = 10;
+            пускToolStripMenuItem.Name = "пускToolStripMenuItem";
+            пускToolStripMenuItem.Size = new Size(67, 29);
+            пускToolStripMenuItem.Text = "Пуск";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            справкаToolStripMenuItem.Size = new Size(97, 29);
+            справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(24, 24);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripButton4, toolStripButton5, toolStripButton6, toolStripButton7, toolStripButton8 });
+            toolStrip1.Location = new Point(0, 33);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(982, 33);
+            toolStrip1.TabIndex = 16;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = Properties.Resources.file_new;
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(34, 28);
+            toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton2.Image = Properties.Resources.folder;
+            toolStripButton2.ImageTransparentColor = Color.Magenta;
+            toolStripButton2.Name = "toolStripButton2";
+            toolStripButton2.Size = new Size(34, 28);
+            toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton3.Image = Properties.Resources.save;
+            toolStripButton3.ImageTransparentColor = Color.Magenta;
+            toolStripButton3.Name = "toolStripButton3";
+            toolStripButton3.Size = new Size(34, 28);
+            toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripButton4
+            // 
+            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton4.Image = Properties.Resources.arrow_left;
+            toolStripButton4.ImageTransparentColor = Color.Magenta;
+            toolStripButton4.Name = "toolStripButton4";
+            toolStripButton4.Size = new Size(34, 28);
+            toolStripButton4.Text = "toolStripButton4";
+            // 
+            // toolStripButton5
+            // 
+            toolStripButton5.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton5.Image = Properties.Resources.arrow_right;
+            toolStripButton5.ImageTransparentColor = Color.Magenta;
+            toolStripButton5.Name = "toolStripButton5";
+            toolStripButton5.Size = new Size(34, 28);
+            toolStripButton5.Text = "toolStripButton5";
+            // 
+            // toolStripButton6
+            // 
+            toolStripButton6.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton6.Image = Properties.Resources.file;
+            toolStripButton6.ImageTransparentColor = Color.Magenta;
+            toolStripButton6.Name = "toolStripButton6";
+            toolStripButton6.Size = new Size(34, 28);
+            toolStripButton6.Text = "toolStripButton6";
+            // 
+            // toolStripButton7
+            // 
+            toolStripButton7.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton7.Image = Properties.Resources.scissors;
+            toolStripButton7.ImageTransparentColor = Color.Magenta;
+            toolStripButton7.Name = "toolStripButton7";
+            toolStripButton7.Size = new Size(34, 28);
+            toolStripButton7.Text = "toolStripButton7";
+            // 
+            // toolStripButton8
+            // 
+            toolStripButton8.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton8.Image = Properties.Resources.paste;
+            toolStripButton8.ImageTransparentColor = Color.Magenta;
+            toolStripButton8.Name = "toolStripButton8";
+            toolStripButton8.Size = new Size(34, 28);
+            toolStripButton8.Text = "toolStripButton8";
             // 
             // groupBox2
             // 
+            groupBox2.BackgroundImageLayout = ImageLayout.None;
+            groupBox2.Controls.Add(tableLayoutPanel2);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(0, 100);
+            groupBox2.Location = new Point(0, 66);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(767, 350);
-            groupBox2.TabIndex = 10;
+            groupBox2.Padding = new Padding(0);
+            groupBox2.Size = new Size(982, 645);
+            groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
             // 
-            // groupBox3
+            // tableLayoutPanel2
             // 
-            groupBox3.Dock = DockStyle.Bottom;
-            groupBox3.Location = new Point(0, 391);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(767, 59);
-            groupBox3.TabIndex = 11;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "groupBox3";
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(richTextBox1, 0, 0);
+            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 24);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 49.6124039F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50.3875961F));
+            tableLayoutPanel2.Size = new Size(982, 621);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.Location = new Point(3, 3);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(976, 302);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.Info;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 311);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(976, 307);
+            dataGridView1.TabIndex = 1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(767, 450);
-            Controls.Add(groupBox3);
+            ClientSize = new Size(982, 711);
             Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(toolStrip1);
+            Controls.Add(menuStrip1);
             Name = "Form1";
-            Text = "Form1";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
+            Text = "Compiler";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private GroupBox groupBox1;
-        private TableLayoutPanel tableLayoutPanel1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem файлToolStripMenuItem;
+        private ToolStripMenuItem созданиеToolStripMenuItem;
+        private ToolStripMenuItem открытиеToolStripMenuItem;
+        private ToolStripMenuItem сохранениеToolStripMenuItem;
+        private ToolStripMenuItem сохранениеКакToolStripMenuItem;
+        private ToolStripMenuItem выходToolStripMenuItem;
+        private ToolStripMenuItem правкаToolStripMenuItem;
+        private ToolStripMenuItem текстToolStripMenuItem;
+        private ToolStripMenuItem пускToolStripMenuItem;
+        private ToolStripMenuItem справкаToolStripMenuItem;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButton1;
+        private ToolStripButton toolStripButton2;
+        private ToolStripButton toolStripButton3;
+        private ToolStripButton toolStripButton4;
+        private ToolStripButton toolStripButton5;
+        private ToolStripButton toolStripButton6;
+        private ToolStripButton toolStripButton7;
+        private ToolStripButton toolStripButton8;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
+        private TableLayoutPanel tableLayoutPanel2;
+        private RichTextBox richTextBox1;
+        private DataGridView dataGridView1;
     }
 }
