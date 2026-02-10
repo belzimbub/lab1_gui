@@ -36,9 +36,25 @@
             сохранениеКакToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             правкаToolStripMenuItem = new ToolStripMenuItem();
+            отменитьToolStripMenuItem = new ToolStripMenuItem();
+            повторитьToolStripMenuItem = new ToolStripMenuItem();
+            вырезатьToolStripMenuItem = new ToolStripMenuItem();
+            копироватьToolStripMenuItem = new ToolStripMenuItem();
+            вставитьToolStripMenuItem = new ToolStripMenuItem();
+            удалитьToolStripMenuItem = new ToolStripMenuItem();
+            выделитьВсеToolStripMenuItem = new ToolStripMenuItem();
             текстToolStripMenuItem = new ToolStripMenuItem();
+            постановкаЗадаиToolStripMenuItem = new ToolStripMenuItem();
+            грамматикаToolStripMenuItem = new ToolStripMenuItem();
+            классификацияГрамматикиToolStripMenuItem = new ToolStripMenuItem();
+            методАнализаToolStripMenuItem = new ToolStripMenuItem();
+            тестовыйПримерToolStripMenuItem = new ToolStripMenuItem();
+            списокЛитературыToolStripMenuItem = new ToolStripMenuItem();
+            исходныйКодПрограммыToolStripMenuItem = new ToolStripMenuItem();
             пускToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
+            вызовСправкиToolStripMenuItem = new ToolStripMenuItem();
+            оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
             toolStripButton2 = new ToolStripButton();
@@ -49,13 +65,13 @@
             toolStripButton7 = new ToolStripButton();
             toolStripButton8 = new ToolStripButton();
             groupBox2 = new GroupBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             richTextBox1 = new RichTextBox();
             dataGridView1 = new DataGridView();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBox2.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -79,44 +95,131 @@
             // созданиеToolStripMenuItem
             // 
             созданиеToolStripMenuItem.Name = "созданиеToolStripMenuItem";
-            созданиеToolStripMenuItem.Size = new Size(244, 34);
+            созданиеToolStripMenuItem.Size = new Size(232, 34);
             созданиеToolStripMenuItem.Text = "Создание";
             // 
             // открытиеToolStripMenuItem
             // 
             открытиеToolStripMenuItem.Name = "открытиеToolStripMenuItem";
-            открытиеToolStripMenuItem.Size = new Size(244, 34);
-            открытиеToolStripMenuItem.Text = "Открытие";
+            открытиеToolStripMenuItem.Size = new Size(232, 34);
+            открытиеToolStripMenuItem.Text = "Открыть";
+            открытиеToolStripMenuItem.Click += открытиеToolStripMenuItem_Click;
             // 
             // сохранениеToolStripMenuItem
             // 
             сохранениеToolStripMenuItem.Name = "сохранениеToolStripMenuItem";
-            сохранениеToolStripMenuItem.Size = new Size(244, 34);
-            сохранениеToolStripMenuItem.Text = "Сохранение";
+            сохранениеToolStripMenuItem.Size = new Size(232, 34);
+            сохранениеToolStripMenuItem.Text = "Сохранить";
             // 
             // сохранениеКакToolStripMenuItem
             // 
             сохранениеКакToolStripMenuItem.Name = "сохранениеКакToolStripMenuItem";
-            сохранениеКакToolStripMenuItem.Size = new Size(244, 34);
-            сохранениеКакToolStripMenuItem.Text = "Сохранение как";
+            сохранениеКакToolStripMenuItem.Size = new Size(232, 34);
+            сохранениеКакToolStripMenuItem.Text = "Сохранить как";
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(244, 34);
+            выходToolStripMenuItem.Size = new Size(232, 34);
             выходToolStripMenuItem.Text = "Выход";
             // 
             // правкаToolStripMenuItem
             // 
+            правкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { отменитьToolStripMenuItem, повторитьToolStripMenuItem, вырезатьToolStripMenuItem, копироватьToolStripMenuItem, вставитьToolStripMenuItem, удалитьToolStripMenuItem, выделитьВсеToolStripMenuItem });
             правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
             правкаToolStripMenuItem.Size = new Size(89, 29);
             правкаToolStripMenuItem.Text = "Правка";
             // 
+            // отменитьToolStripMenuItem
+            // 
+            отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
+            отменитьToolStripMenuItem.Size = new Size(223, 34);
+            отменитьToolStripMenuItem.Text = "Отменить";
+            // 
+            // повторитьToolStripMenuItem
+            // 
+            повторитьToolStripMenuItem.Name = "повторитьToolStripMenuItem";
+            повторитьToolStripMenuItem.Size = new Size(223, 34);
+            повторитьToolStripMenuItem.Text = "Повторить";
+            // 
+            // вырезатьToolStripMenuItem
+            // 
+            вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
+            вырезатьToolStripMenuItem.Size = new Size(223, 34);
+            вырезатьToolStripMenuItem.Text = "Вырезать";
+            // 
+            // копироватьToolStripMenuItem
+            // 
+            копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
+            копироватьToolStripMenuItem.Size = new Size(223, 34);
+            копироватьToolStripMenuItem.Text = "Копировать";
+            // 
+            // вставитьToolStripMenuItem
+            // 
+            вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            вставитьToolStripMenuItem.Size = new Size(223, 34);
+            вставитьToolStripMenuItem.Text = "Вставить";
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            удалитьToolStripMenuItem.Size = new Size(223, 34);
+            удалитьToolStripMenuItem.Text = "Удалить";
+            // 
+            // выделитьВсеToolStripMenuItem
+            // 
+            выделитьВсеToolStripMenuItem.Name = "выделитьВсеToolStripMenuItem";
+            выделитьВсеToolStripMenuItem.Size = new Size(223, 34);
+            выделитьВсеToolStripMenuItem.Text = "Выделить все";
+            // 
             // текстToolStripMenuItem
             // 
+            текстToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { постановкаЗадаиToolStripMenuItem, грамматикаToolStripMenuItem, классификацияГрамматикиToolStripMenuItem, методАнализаToolStripMenuItem, тестовыйПримерToolStripMenuItem, списокЛитературыToolStripMenuItem, исходныйКодПрограммыToolStripMenuItem });
             текстToolStripMenuItem.Name = "текстToolStripMenuItem";
             текстToolStripMenuItem.Size = new Size(70, 29);
             текстToolStripMenuItem.Text = "Текст";
+            // 
+            // постановкаЗадаиToolStripMenuItem
+            // 
+            постановкаЗадаиToolStripMenuItem.Name = "постановкаЗадаиToolStripMenuItem";
+            постановкаЗадаиToolStripMenuItem.Size = new Size(341, 34);
+            постановкаЗадаиToolStripMenuItem.Text = "Постановка задаи";
+            // 
+            // грамматикаToolStripMenuItem
+            // 
+            грамматикаToolStripMenuItem.Name = "грамматикаToolStripMenuItem";
+            грамматикаToolStripMenuItem.Size = new Size(341, 34);
+            грамматикаToolStripMenuItem.Text = "Грамматика";
+            // 
+            // классификацияГрамматикиToolStripMenuItem
+            // 
+            классификацияГрамматикиToolStripMenuItem.Name = "классификацияГрамматикиToolStripMenuItem";
+            классификацияГрамматикиToolStripMenuItem.Size = new Size(341, 34);
+            классификацияГрамматикиToolStripMenuItem.Text = "Классификация грамматики";
+            // 
+            // методАнализаToolStripMenuItem
+            // 
+            методАнализаToolStripMenuItem.Name = "методАнализаToolStripMenuItem";
+            методАнализаToolStripMenuItem.Size = new Size(341, 34);
+            методАнализаToolStripMenuItem.Text = "Метод анализа";
+            // 
+            // тестовыйПримерToolStripMenuItem
+            // 
+            тестовыйПримерToolStripMenuItem.Name = "тестовыйПримерToolStripMenuItem";
+            тестовыйПримерToolStripMenuItem.Size = new Size(341, 34);
+            тестовыйПримерToolStripMenuItem.Text = "Тестовый пример";
+            // 
+            // списокЛитературыToolStripMenuItem
+            // 
+            списокЛитературыToolStripMenuItem.Name = "списокЛитературыToolStripMenuItem";
+            списокЛитературыToolStripMenuItem.Size = new Size(341, 34);
+            списокЛитературыToolStripMenuItem.Text = "Список литературы";
+            // 
+            // исходныйКодПрограммыToolStripMenuItem
+            // 
+            исходныйКодПрограммыToolStripMenuItem.Name = "исходныйКодПрограммыToolStripMenuItem";
+            исходныйКодПрограммыToolStripMenuItem.Size = new Size(341, 34);
+            исходныйКодПрограммыToolStripMenuItem.Text = "Исходный код программы";
             // 
             // пускToolStripMenuItem
             // 
@@ -126,9 +229,22 @@
             // 
             // справкаToolStripMenuItem
             // 
+            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { вызовСправкиToolStripMenuItem, оПрограммеToolStripMenuItem });
             справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             справкаToolStripMenuItem.Size = new Size(97, 29);
             справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // вызовСправкиToolStripMenuItem
+            // 
+            вызовСправкиToolStripMenuItem.Name = "вызовСправкиToolStripMenuItem";
+            вызовСправкиToolStripMenuItem.Size = new Size(238, 34);
+            вызовСправкиToolStripMenuItem.Text = "Вызов справки";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            оПрограммеToolStripMenuItem.Size = new Size(238, 34);
+            оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // toolStrip1
             // 
@@ -215,7 +331,7 @@
             // groupBox2
             // 
             groupBox2.BackgroundImageLayout = ImageLayout.None;
-            groupBox2.Controls.Add(tableLayoutPanel2);
+            groupBox2.Controls.Add(tableLayoutPanel1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 66);
             groupBox2.Name = "groupBox2";
@@ -224,39 +340,39 @@
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel1
             // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(richTextBox1, 0, 0);
-            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 24);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 49.6124039F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50.3875961F));
-            tableLayoutPanel2.Size = new Size(982, 621);
-            tableLayoutPanel2.TabIndex = 0;
+            tableLayoutPanel1.AllowDrop = true;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel1.Controls.Add(richTextBox1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 24);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(982, 621);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
             richTextBox1.Location = new Point(3, 3);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(976, 302);
+            richTextBox1.Size = new Size(976, 304);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = SystemColors.Info;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 311);
+            dataGridView1.Location = new Point(3, 313);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(976, 307);
+            dataGridView1.Size = new Size(976, 305);
             dataGridView1.TabIndex = 1;
             // 
             // Form1
@@ -274,7 +390,7 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -301,8 +417,24 @@
         private ToolStripButton toolStripButton6;
         private ToolStripButton toolStripButton7;
         private ToolStripButton toolStripButton8;
+        private ToolStripMenuItem отменитьToolStripMenuItem;
+        private ToolStripMenuItem повторитьToolStripMenuItem;
+        private ToolStripMenuItem вырезатьToolStripMenuItem;
+        private ToolStripMenuItem копироватьToolStripMenuItem;
+        private ToolStripMenuItem вставитьToolStripMenuItem;
+        private ToolStripMenuItem удалитьToolStripMenuItem;
+        private ToolStripMenuItem выделитьВсеToolStripMenuItem;
+        private ToolStripMenuItem постановкаЗадаиToolStripMenuItem;
+        private ToolStripMenuItem грамматикаToolStripMenuItem;
+        private ToolStripMenuItem классификацияГрамматикиToolStripMenuItem;
+        private ToolStripMenuItem методАнализаToolStripMenuItem;
+        private ToolStripMenuItem тестовыйПримерToolStripMenuItem;
+        private ToolStripMenuItem списокЛитературыToolStripMenuItem;
+        private ToolStripMenuItem исходныйКодПрограммыToolStripMenuItem;
+        private ToolStripMenuItem вызовСправкиToolStripMenuItem;
+        private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private GroupBox groupBox2;
-        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel1;
         private RichTextBox richTextBox1;
         private DataGridView dataGridView1;
     }

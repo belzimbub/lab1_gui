@@ -36,5 +36,10 @@ namespace lab1_gui
         {
 
         }
+
+        private void îòêğûòèåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
