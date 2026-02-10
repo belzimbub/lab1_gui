@@ -61,13 +61,15 @@
             toolStripButton3 = new ToolStripButton();
             toolStripButton4 = new ToolStripButton();
             toolStripButton5 = new ToolStripButton();
-            toolStripButton6 = new ToolStripButton();
             toolStripButton7 = new ToolStripButton();
+            toolStripButton6 = new ToolStripButton();
             toolStripButton8 = new ToolStripButton();
             groupBox2 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            richTextBox1 = new RichTextBox();
             dataGridView1 = new DataGridView();
+            richTextBox1 = new RichTextBox();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -96,7 +98,8 @@
             // 
             созданиеToolStripMenuItem.Name = "созданиеToolStripMenuItem";
             созданиеToolStripMenuItem.Size = new Size(232, 34);
-            созданиеToolStripMenuItem.Text = "Создание";
+            созданиеToolStripMenuItem.Text = "Создать";
+            созданиеToolStripMenuItem.Click += созданиеToolStripMenuItem_Click;
             // 
             // открытиеToolStripMenuItem
             // 
@@ -110,6 +113,7 @@
             сохранениеToolStripMenuItem.Name = "сохранениеToolStripMenuItem";
             сохранениеToolStripMenuItem.Size = new Size(232, 34);
             сохранениеToolStripMenuItem.Text = "Сохранить";
+            сохранениеToolStripMenuItem.Click += сохранениеToolStripMenuItem_Click;
             // 
             // сохранениеКакToolStripMenuItem
             // 
@@ -249,12 +253,12 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(24, 24);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripButton4, toolStripButton5, toolStripButton6, toolStripButton7, toolStripButton8 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripButton4, toolStripButton5, toolStripButton7, toolStripButton6, toolStripButton8 });
             toolStrip1.Location = new Point(0, 33);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(982, 33);
             toolStrip1.TabIndex = 16;
-            toolStrip1.Text = "toolStrip1";
+            toolStrip1.Text = "Создать";
             // 
             // toolStripButton1
             // 
@@ -263,7 +267,8 @@
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new Size(34, 28);
-            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Text = "Создать";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // toolStripButton2
             // 
@@ -272,7 +277,8 @@
             toolStripButton2.ImageTransparentColor = Color.Magenta;
             toolStripButton2.Name = "toolStripButton2";
             toolStripButton2.Size = new Size(34, 28);
-            toolStripButton2.Text = "toolStripButton2";
+            toolStripButton2.Text = "Открыть";
+            toolStripButton2.Click += toolStripButton2_Click;
             // 
             // toolStripButton3
             // 
@@ -281,7 +287,8 @@
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
             toolStripButton3.Size = new Size(34, 28);
-            toolStripButton3.Text = "toolStripButton3";
+            toolStripButton3.Text = "Сохранить";
+            toolStripButton3.Click += toolStripButton3_Click;
             // 
             // toolStripButton4
             // 
@@ -290,7 +297,8 @@
             toolStripButton4.ImageTransparentColor = Color.Magenta;
             toolStripButton4.Name = "toolStripButton4";
             toolStripButton4.Size = new Size(34, 28);
-            toolStripButton4.Text = "toolStripButton4";
+            toolStripButton4.Text = "Отменить";
+            toolStripButton4.Click += toolStripButton4_Click;
             // 
             // toolStripButton5
             // 
@@ -299,16 +307,7 @@
             toolStripButton5.ImageTransparentColor = Color.Magenta;
             toolStripButton5.Name = "toolStripButton5";
             toolStripButton5.Size = new Size(34, 28);
-            toolStripButton5.Text = "toolStripButton5";
-            // 
-            // toolStripButton6
-            // 
-            toolStripButton6.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton6.Image = Properties.Resources.file;
-            toolStripButton6.ImageTransparentColor = Color.Magenta;
-            toolStripButton6.Name = "toolStripButton6";
-            toolStripButton6.Size = new Size(34, 28);
-            toolStripButton6.Text = "toolStripButton6";
+            toolStripButton5.Text = "Повторить";
             // 
             // toolStripButton7
             // 
@@ -317,7 +316,16 @@
             toolStripButton7.ImageTransparentColor = Color.Magenta;
             toolStripButton7.Name = "toolStripButton7";
             toolStripButton7.Size = new Size(34, 28);
-            toolStripButton7.Text = "toolStripButton7";
+            toolStripButton7.Text = "Вырезать";
+            // 
+            // toolStripButton6
+            // 
+            toolStripButton6.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton6.Image = Properties.Resources.file;
+            toolStripButton6.ImageTransparentColor = Color.Magenta;
+            toolStripButton6.Name = "toolStripButton6";
+            toolStripButton6.Size = new Size(34, 28);
+            toolStripButton6.Text = "Копировать";
             // 
             // toolStripButton8
             // 
@@ -326,7 +334,7 @@
             toolStripButton8.ImageTransparentColor = Color.Magenta;
             toolStripButton8.Name = "toolStripButton8";
             toolStripButton8.Size = new Size(34, 28);
-            toolStripButton8.Text = "toolStripButton8";
+            toolStripButton8.Text = "Вставить";
             // 
             // groupBox2
             // 
@@ -356,15 +364,6 @@
             tableLayoutPanel1.Size = new Size(982, 621);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // richTextBox1
-            // 
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(3, 3);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(976, 304);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "";
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -374,6 +373,20 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(976, 305);
             dataGridView1.TabIndex = 1;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.ImeMode = ImeMode.On;
+            richTextBox1.Location = new Point(3, 3);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(976, 304);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -437,5 +450,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private RichTextBox richTextBox1;
         private DataGridView dataGridView1;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
     }
 }
