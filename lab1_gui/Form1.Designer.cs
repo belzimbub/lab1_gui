@@ -308,6 +308,7 @@
             toolStripButton5.Name = "toolStripButton5";
             toolStripButton5.Size = new Size(34, 28);
             toolStripButton5.Text = "Повторить";
+            toolStripButton5.Click += toolStripButton5_Click;
             // 
             // toolStripButton7
             // 
@@ -317,6 +318,7 @@
             toolStripButton7.Name = "toolStripButton7";
             toolStripButton7.Size = new Size(34, 28);
             toolStripButton7.Text = "Вырезать";
+            toolStripButton7.Click += toolStripButton7_Click;
             // 
             // toolStripButton6
             // 
@@ -326,6 +328,7 @@
             toolStripButton6.Name = "toolStripButton6";
             toolStripButton6.Size = new Size(34, 28);
             toolStripButton6.Text = "Копировать";
+            toolStripButton6.Click += toolStripButton6_Click;
             // 
             // toolStripButton8
             // 
@@ -335,6 +338,7 @@
             toolStripButton8.Name = "toolStripButton8";
             toolStripButton8.Size = new Size(34, 28);
             toolStripButton8.Text = "Вставить";
+            toolStripButton8.Click += toolStripButton8_Click;
             // 
             // groupBox2
             // 
