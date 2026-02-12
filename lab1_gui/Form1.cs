@@ -8,21 +8,55 @@ namespace lab1_gui
         public Form1()
         {
             InitializeComponent();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIsClosing);
         }
-        private void FileNew()
+        private int CommitChanges()
         {
-            richTextBox1.Clear();
-        }
-        private void FileOpen()
-        {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK && openFileDialog1.FileName.Contains(".txt"))
+            if (richTextBox1.Text.Length > 0)
             {
-                string open = File.ReadAllText(openFileDialog1.FileName);
-                richTextBox1.Text = open;
+                DialogResult dlg = MessageBox.Show("Сохранить изменения?", "Предупреждение", MessageBoxButtons.YesNo);
+                if (dlg == DialogResult.Yes)
+                {
+                    FileSave();
+                    return 1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else 
+            {
+                return 1;
+            }
+        }
+        private void FormIsClosing(object sender, FormClosingEventArgs e)
+        {
+            if (CommitChanges() == 1)
+            {
+                e.Cancel = false;
             }
             else
             {
-                MessageBox.Show("Объект не является текстовым файлом.");
+                e.Cancel = true;
+            }
+        }
+        private void FileNew()
+        {
+            if (CommitChanges() == 1)
+            {
+                richTextBox1.Clear();
+            }
+        }
+        private void FileOpen()
+        {
+            if (CommitChanges() == 1)
+            {
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK && openFileDialog1.FileName.Contains(".txt"))
+                {
+                    string open = File.ReadAllText(openFileDialog1.FileName);
+                    richTextBox1.Text = open;
+                }
             }
         }
         private void FileSave()
@@ -113,6 +147,11 @@ namespace lab1_gui
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             FilePaste();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

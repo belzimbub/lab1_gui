@@ -97,35 +97,36 @@
             // созданиеToolStripMenuItem
             // 
             созданиеToolStripMenuItem.Name = "созданиеToolStripMenuItem";
-            созданиеToolStripMenuItem.Size = new Size(232, 34);
+            созданиеToolStripMenuItem.Size = new Size(270, 34);
             созданиеToolStripMenuItem.Text = "Создать";
             созданиеToolStripMenuItem.Click += созданиеToolStripMenuItem_Click;
             // 
             // открытиеToolStripMenuItem
             // 
             открытиеToolStripMenuItem.Name = "открытиеToolStripMenuItem";
-            открытиеToolStripMenuItem.Size = new Size(232, 34);
+            открытиеToolStripMenuItem.Size = new Size(270, 34);
             открытиеToolStripMenuItem.Text = "Открыть";
             открытиеToolStripMenuItem.Click += открытиеToolStripMenuItem_Click;
             // 
             // сохранениеToolStripMenuItem
             // 
             сохранениеToolStripMenuItem.Name = "сохранениеToolStripMenuItem";
-            сохранениеToolStripMenuItem.Size = new Size(232, 34);
+            сохранениеToolStripMenuItem.Size = new Size(270, 34);
             сохранениеToolStripMenuItem.Text = "Сохранить";
             сохранениеToolStripMenuItem.Click += сохранениеToolStripMenuItem_Click;
             // 
             // сохранениеКакToolStripMenuItem
             // 
             сохранениеКакToolStripMenuItem.Name = "сохранениеКакToolStripMenuItem";
-            сохранениеКакToolStripMenuItem.Size = new Size(232, 34);
+            сохранениеКакToolStripMenuItem.Size = new Size(270, 34);
             сохранениеКакToolStripMenuItem.Text = "Сохранить как";
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(232, 34);
+            выходToolStripMenuItem.Size = new Size(270, 34);
             выходToolStripMenuItem.Text = "Выход";
+            выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
             // правкаToolStripMenuItem
             // 
