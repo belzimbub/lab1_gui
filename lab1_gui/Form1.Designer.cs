@@ -120,6 +120,7 @@
             сохранениеКакToolStripMenuItem.Name = "сохранениеКакToolStripMenuItem";
             сохранениеКакToolStripMenuItem.Size = new Size(270, 34);
             сохранениеКакToolStripMenuItem.Text = "Сохранить как";
+            сохранениеКакToolStripMenuItem.Click += сохранениеКакToolStripMenuItem_Click;
             // 
             // выходToolStripMenuItem
             // 

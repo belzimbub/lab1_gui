@@ -5,6 +5,7 @@ namespace lab1_gui
 {
     public partial class Form1 : Form
     {
+        private string FileName = string.Empty;
         public Form1()
         {
             InitializeComponent();
@@ -18,17 +19,9 @@ namespace lab1_gui
                 if (dlg == DialogResult.Yes)
                 {
                     FileSave();
-                    return 1;
-                }
-                else
-                {
-                    return 1;
                 }
             }
-            else 
-            {
-                return 1;
-            }
+            return 1;
         }
         private void FormIsClosing(object sender, FormClosingEventArgs e)
         {
@@ -45,6 +38,7 @@ namespace lab1_gui
         {
             if (CommitChanges() == 1)
             {
+                FileName = string.Empty;
                 richTextBox1.Clear();
             }
         }
@@ -52,19 +46,48 @@ namespace lab1_gui
         {
             if (CommitChanges() == 1)
             {
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK && openFileDialog1.FileName.Contains(".txt"))
+                OpenFileDialog open = new OpenFileDialog();
+
+                open.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+                open.Title = "Open File";
+                open.FileName = "";
+
+                if (open.ShowDialog() == DialogResult.OK)
                 {
-                    string open = File.ReadAllText(openFileDialog1.FileName);
-                    richTextBox1.Text = open;
+                    // save the opened FileName in our variable
+                    this.FileName = open.FileName;
+                    this.Text = string.Format("{0}", Path.GetFileNameWithoutExtension(open.FileName));
+                    StreamReader reader = new StreamReader(open.FileName);
+                    richTextBox1.Text = reader.ReadToEnd();
+                    reader.Close();
                 }
             }
         }
         private void FileSave()
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (string.IsNullOrEmpty(this.FileName))
             {
-                string name = saveFileDialog1.FileName + ".txt";
-                File.WriteAllText(name, richTextBox1.Text);
+                SaveFileDialog saving = new SaveFileDialog();
+
+                saving.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                saving.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+                saving.Title = "Save As";
+                saving.FileName = "Untitled";
+
+                if (saving.ShowDialog() == DialogResult.OK)
+                {
+                    FileName = saving.FileName;
+                    StreamWriter writing = new StreamWriter(saving.FileName);
+                    writing.Write(richTextBox1.Text);
+                    writing.Close();
+                }
+            }
+            else
+            {
+                StreamWriter writer = new StreamWriter(this.FileName);
+                writer.Write(richTextBox1.Text);
+                writer.Close();
             }
         }
         private void FileUndo()
@@ -121,6 +144,11 @@ namespace lab1_gui
 
         private void ÒÓı‡ÌÂÌËÂToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FileSave();
+        }
+        private void ÒÓı‡ÌÂÌËÂ ‡ÍToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileName = string.Empty;
             FileSave();
         }
 
