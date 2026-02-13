@@ -156,30 +156,54 @@ namespace lab1_gui
         {
             FileUndo();
         }
-
+        private void îòìåíèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileUndo();
+        }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             FileRedo();
         }
-
+        private void ïîâòîğèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileRedo();
+        }
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             FileCut();
         }
-
+        private void âûğåçàòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileCut();
+        }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             FileCopy();
         }
-
+        private void êîïèğîâàòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileCopy();
+        }
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             FilePaste();
         }
-
+        private void âñòàâèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilePaste();
+        }
         private void âûõîäToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void óäàëèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+        }
+
+        private void âûäåëèòüÂñåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
         }
     }
 }

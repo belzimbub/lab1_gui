@@ -97,35 +97,35 @@
             // созданиеToolStripMenuItem
             // 
             созданиеToolStripMenuItem.Name = "созданиеToolStripMenuItem";
-            созданиеToolStripMenuItem.Size = new Size(270, 34);
+            созданиеToolStripMenuItem.Size = new Size(232, 34);
             созданиеToolStripMenuItem.Text = "Создать";
             созданиеToolStripMenuItem.Click += созданиеToolStripMenuItem_Click;
             // 
             // открытиеToolStripMenuItem
             // 
             открытиеToolStripMenuItem.Name = "открытиеToolStripMenuItem";
-            открытиеToolStripMenuItem.Size = new Size(270, 34);
+            открытиеToolStripMenuItem.Size = new Size(232, 34);
             открытиеToolStripMenuItem.Text = "Открыть";
             открытиеToolStripMenuItem.Click += открытиеToolStripMenuItem_Click;
             // 
             // сохранениеToolStripMenuItem
             // 
             сохранениеToolStripMenuItem.Name = "сохранениеToolStripMenuItem";
-            сохранениеToolStripMenuItem.Size = new Size(270, 34);
+            сохранениеToolStripMenuItem.Size = new Size(232, 34);
             сохранениеToolStripMenuItem.Text = "Сохранить";
             сохранениеToolStripMenuItem.Click += сохранениеToolStripMenuItem_Click;
             // 
             // сохранениеКакToolStripMenuItem
             // 
             сохранениеКакToolStripMenuItem.Name = "сохранениеКакToolStripMenuItem";
-            сохранениеКакToolStripMenuItem.Size = new Size(270, 34);
+            сохранениеКакToolStripMenuItem.Size = new Size(232, 34);
             сохранениеКакToolStripMenuItem.Text = "Сохранить как";
             сохранениеКакToolStripMenuItem.Click += сохранениеКакToolStripMenuItem_Click;
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(270, 34);
+            выходToolStripMenuItem.Size = new Size(232, 34);
             выходToolStripMenuItem.Text = "Выход";
             выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
@@ -139,44 +139,51 @@
             // отменитьToolStripMenuItem
             // 
             отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
-            отменитьToolStripMenuItem.Size = new Size(223, 34);
+            отменитьToolStripMenuItem.Size = new Size(270, 34);
             отменитьToolStripMenuItem.Text = "Отменить";
+            отменитьToolStripMenuItem.Click += отменитьToolStripMenuItem_Click;
             // 
             // повторитьToolStripMenuItem
             // 
             повторитьToolStripMenuItem.Name = "повторитьToolStripMenuItem";
-            повторитьToolStripMenuItem.Size = new Size(223, 34);
+            повторитьToolStripMenuItem.Size = new Size(270, 34);
             повторитьToolStripMenuItem.Text = "Повторить";
+            повторитьToolStripMenuItem.Click += повторитьToolStripMenuItem_Click;
             // 
             // вырезатьToolStripMenuItem
             // 
             вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
-            вырезатьToolStripMenuItem.Size = new Size(223, 34);
+            вырезатьToolStripMenuItem.Size = new Size(270, 34);
             вырезатьToolStripMenuItem.Text = "Вырезать";
+            вырезатьToolStripMenuItem.Click += вырезатьToolStripMenuItem_Click;
             // 
             // копироватьToolStripMenuItem
             // 
             копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            копироватьToolStripMenuItem.Size = new Size(223, 34);
+            копироватьToolStripMenuItem.Size = new Size(270, 34);
             копироватьToolStripMenuItem.Text = "Копировать";
+            копироватьToolStripMenuItem.Click += копироватьToolStripMenuItem_Click;
             // 
             // вставитьToolStripMenuItem
             // 
             вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            вставитьToolStripMenuItem.Size = new Size(223, 34);
+            вставитьToolStripMenuItem.Size = new Size(270, 34);
             вставитьToolStripMenuItem.Text = "Вставить";
+            вставитьToolStripMenuItem.Click += вставитьToolStripMenuItem_Click;
             // 
             // удалитьToolStripMenuItem
             // 
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            удалитьToolStripMenuItem.Size = new Size(223, 34);
+            удалитьToolStripMenuItem.Size = new Size(270, 34);
             удалитьToolStripMenuItem.Text = "Удалить";
+            удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // выделитьВсеToolStripMenuItem
             // 
             выделитьВсеToolStripMenuItem.Name = "выделитьВсеToolStripMenuItem";
-            выделитьВсеToolStripMenuItem.Size = new Size(223, 34);
+            выделитьВсеToolStripMenuItem.Size = new Size(270, 34);
             выделитьВсеToolStripMenuItem.Text = "Выделить все";
+            выделитьВсеToolStripMenuItem.Click += выделитьВсеToolStripMenuItem_Click;
             // 
             // текстToolStripMenuItem
             // 
