@@ -15,6 +15,7 @@
 Руководство пользователя:
 На рисунке приведен пример рабочего окна текстового редактора.
 <img width="986" height="758" alt="изображение" src="https://github.com/user-attachments/assets/399ca605-09ad-4d31-a574-9e590620c367" />
+
 1 – основное меню программы;
 2 – панель инструментов;
 3 – окно/область ввода/редактирования текста;
@@ -25,7 +26,7 @@
 <img width="986" height="758" alt="изображение" src="https://github.com/user-attachments/assets/3a46077f-28d9-4730-8b90-1be29ad0aa4a" />
 
 2) Открытие документа
-<img width="986" height="758" alt="изображение" src="https://github.com/user-attachments/assets/9f2b735f-9a63-497d-b6d3-93b15d0090a0" />
+<img width="986" height="758" alt="изображение" src="https://github.com/user-attachments/assets/82635b59-034a-45d1-9337-272b5ac1783e" />
 
 3) Сохранение текущих изменений в документе
 <img width="986" height="758" alt="изображение" src="https://github.com/user-attachments/assets/56f10c3d-33fe-470b-b242-352721245af9" />
