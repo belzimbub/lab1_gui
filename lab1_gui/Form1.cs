@@ -9,7 +9,7 @@ namespace lab1_gui
     {
         TextEditor textEdit = new();
         Scanner scanner = new();
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace lab1_gui
                 e.Cancel = true;
             }
         }
-        private void ñîçäàíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileNew(richTextBox1);
         }
@@ -41,7 +41,7 @@ namespace lab1_gui
             textEdit.FileNew(richTextBox1);
         }
 
-        private void îòêğûòèåToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileOpen(richTextBox1, this);
         }
@@ -56,11 +56,11 @@ namespace lab1_gui
             textEdit.FileSave(richTextBox1);
         }
 
-        private void ñîõğàíåíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileSave(richTextBox1);
         }
-        private void ñîõğàíåíèåÊàêToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.file = string.Empty;
             textEdit.FileSave(richTextBox1);
@@ -70,7 +70,7 @@ namespace lab1_gui
         {
             textEdit.FileUndo(richTextBox1);
         }
-        private void îòìåíèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileUndo(richTextBox1);
         }
@@ -78,7 +78,7 @@ namespace lab1_gui
         {
             textEdit.FileRedo(richTextBox1);
         }
-        private void ïîâòîğèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileRedo(richTextBox1);
         }
@@ -86,7 +86,7 @@ namespace lab1_gui
         {
             textEdit.FileCut(richTextBox1);
         }
-        private void âûğåçàòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileCut(richTextBox1);
         }
@@ -94,7 +94,7 @@ namespace lab1_gui
         {
             textEdit.FileCopy(richTextBox1);
         }
-        private void êîïèğîâàòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileCopy(richTextBox1);
         }
@@ -102,25 +102,25 @@ namespace lab1_gui
         {
             textEdit.FilePaste(richTextBox1);
         }
-        private void âñòàâèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FilePaste(richTextBox1);
         }
-        private void âûõîäToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private void óäàëèòüToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileClear(richTextBox1);
         }
 
-        private void âûäåëèòüÂñåToolStripMenuItem_Click(object sender, EventArgs e)
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textEdit.FileSelectAll(richTextBox1);
         }
 
-        private void îÏğîãğàììåToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About.AboutProgram();
         }
@@ -135,14 +135,19 @@ namespace lab1_gui
             About.AboutProgram();
         }
 
-        private void âûçîâÑïğàâêèToolStripMenuItem_Click(object sender, EventArgs e)
+        private void manualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About.AboutInstructions();
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = scanner.TextBoxScanner(richTextBox1);
+            scanner.Run(dataGridView1,richTextBox1);
+        }
+
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scanner.Run(dataGridView1, richTextBox1);
         }
     }
 }
