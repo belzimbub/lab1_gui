@@ -104,7 +104,7 @@ const asr34: integer = 425;
 
 ## Тестовые примеры
 1. Корректная строка:
-<img width="986" height="758" alt="Image" src="https://github.com/user-attachments/assets/3544fbc3-6899-46e2-af1f-8cce5e9c93ea" />
+<img width="986" height="758" alt="Image" src="https://github.com/user-attachments/assets/68f1bc75-beb6-471b-8a02-bdc1653b0c97" />
 
 2. Строка с недопустимым символом:
 <img width="986" height="758" alt="Image" src="https://github.com/user-attachments/assets/03ef70c6-2657-4aff-9cb7-cfa11c89f952" />
