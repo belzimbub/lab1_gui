@@ -35,7 +35,6 @@ namespace lab1_gui
 
     public class Parser
     {
-        private string id;
         private int state;
         private List<Token> tokens;
         private int currentTokenIndex;
@@ -47,11 +46,10 @@ namespace lab1_gui
             return errors;
         }
 
-        public bool Parse(List<Token> tokenList, Label label1)
+        public bool Parse(List<Token> tokenList)
         {
             tokens = tokenList;
             state = 1;
-            id = "";
             currentTokenIndex = 0;
 
             errors = new List<ParseError>();
@@ -62,10 +60,10 @@ namespace lab1_gui
                 switch (state)
                 {
                     case 1:
-                        state1(label1);
+                        state1();
                         break;
                     case 2:
-                        state2(label1);
+                        state2();
                         break;
                     case 3:
                         state3();
@@ -87,7 +85,10 @@ namespace lab1_gui
                         break;
                 }
             }
-
+            if (errors.Count == 0)
+            {
+                ValidateEndOfInput();
+            }
             return errors.Count == 0;
         }
 
@@ -112,40 +113,20 @@ namespace lab1_gui
             errors.Add(new ParseError(eMess, removed, token != null ? token.StartPos : -1));
         }
 
-        private bool tryStop()
+        private void state1()
         {
-            Token current = GetCurrentToken();
-            if (current == null || current.Type == TokenType.EndOperator)
-            {
-                if (current != null && current.Type == TokenType.EndOperator)
-                    currentTokenIndex++;
-                state = 9;
-                return true;
-            }
-
-            return false;
-        }
-
-        private void state1(Label label1)
-        {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.Const)
             {
                 currentTokenIndex++;
                 state = 2;
-                id = token.Value;
             }
             else
             {
                 handleError("Ожидается ключевое слово 'const'.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
-                    if (token != null && token.Type == TokenType.Id)
-                    {
-                        state = 2;
-                        return;
-                    }
                     if (token != null && token.Type == TokenType.EndOperator)
                     {
                         state = 8;
@@ -153,19 +134,22 @@ namespace lab1_gui
                     }
                     currentTokenIndex++;
                     token = GetCurrentToken();
+                    if (token != null && token.Type == TokenType.Id || token.Type == TokenType.IntDigit)
+                    {
+                        state = 2;
+                        return;
+                    }
                 }
-                state = 9;
             }
         }
 
-        private void state2(Label label1)
+        private void state2()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.Id)
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 3;
             }
             else
@@ -190,19 +174,16 @@ namespace lab1_gui
                     }
                     currentTokenIndex++;
                     token = GetCurrentToken();
-                    label1.Text = token.Value.ToString();
                 }
-                state = 9;
             }
         }
         private void state3()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.Colon)
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 4;
             }
             else
@@ -228,19 +209,17 @@ namespace lab1_gui
                     currentTokenIndex++;
                     token = GetCurrentToken();
                 }
-                state = 9;
             }
         }
 
         private void state4()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
 
             if (token != null && token.Type == TokenType.Integer)
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 5;
             }
             else
@@ -261,18 +240,16 @@ namespace lab1_gui
                     currentTokenIndex++;
                     token = GetCurrentToken();
                 }
-                state = 9;
             }
         }
 
         private void state5()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.Equal)
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 6;
             }
             else
@@ -295,7 +272,6 @@ namespace lab1_gui
                         state = 8;
                         return;
                     }
-                    //const n4 : integer a= a53;
                     currentTokenIndex++;
                     token = GetCurrentToken();
                     if (token != null && token.Type == TokenType.Id)
@@ -304,17 +280,15 @@ namespace lab1_gui
                         return;
                     }
                 }
-                state = 9;
             }
         }
         private void state6()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 7;
             }
             else
@@ -324,17 +298,16 @@ namespace lab1_gui
         }
         private void state7()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && (token.Type == TokenType.IntDigit))
             {
                 currentTokenIndex++;
-                id = token.Value;
                 state = 8;
             }
             else
             {
-                handleError("Ожидается целочисленное значение.", token != null ? token.Value : null, token);
+                handleError("Ожидается целое число.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && token.Type == TokenType.EndOperator)
@@ -345,32 +318,39 @@ namespace lab1_gui
                     currentTokenIndex++;
                     token = GetCurrentToken();
                 }
-                state = 8;
             }
         }
         private void state8()
         {
-            Token token = GetCurrentToken();
             SkipWhiteSpace();
+            Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.EndOperator)
             {
-                tryStop();
-                return;
+                currentTokenIndex++;
+                if (currentTokenIndex >= tokens.Count) state = 9;
+                else state = 1;
             }
             else
             {
-                handleError("Ожидается знак ';'.", token != null ? token.Value : null, token);
+                handleError("Ожидается знак ';'.", tokens[currentTokenIndex - 1].Value, tokens[currentTokenIndex - 1]);
                 while (currentTokenIndex < tokens.Count)
                 {
-                    if (token != null && token.Type == TokenType.EndOperator)
+                    if (token != null && (token.Type == TokenType.Const|| token.Type == TokenType.Id))
                     {
-                        tryStop();
+                        state = 1;
                         return;
                     }
                     currentTokenIndex++;
                     token = GetCurrentToken();
                 }
-                return;
+            }
+        }
+        private void ValidateEndOfInput()
+        {
+            SkipWhiteSpace();
+            if (state!=9)
+            {
+                handleError("Ожидается знак ';'.",tokens[currentTokenIndex - 1].Value, tokens[currentTokenIndex - 1]);
             }
         }
         public void Display(DataGridView grid, Label label)
@@ -418,12 +398,6 @@ namespace lab1_gui
                     return $"строка: {token.Line}, позиция: {token.StartPos}-{token.EndPos}";
                 }
             }
-            Token closestToken = tokens.OrderBy(t => Math.Abs(t.AbsoluteIndex - index)).FirstOrDefault();
-            if (closestToken != null)
-            {
-                return $"строка: {closestToken.Line}, позиция: ~{closestToken.StartPos}-{closestToken.EndPos}";
-            }
-
             return "Неизвестно";
         }
     }

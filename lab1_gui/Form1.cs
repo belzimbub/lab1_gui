@@ -30,7 +30,7 @@ namespace lab1_gui
         private void Run()
         {
             List<Token> tokens = scanner.Analyze(richTextBox1.Text);
-            bool parseResult = parser.Parse(tokens, label1);
+            bool parseResult = parser.Parse(tokens);
             parser.Display(dataGridView1, label1);
             //scanner.Run(dataGridView1,richTextBox1);
             //regex.PerformSearch();
