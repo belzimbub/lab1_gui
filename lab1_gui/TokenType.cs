@@ -16,6 +16,8 @@ namespace lab1_gui
         IntDigit = 6,
         EndOperator = 7,
         Equal = 8,
+        Minus = 9,
+        Plus = 10,
         Error = 0
     }
 }

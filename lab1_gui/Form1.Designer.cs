@@ -69,8 +69,12 @@
             toolStripButton11 = new ToolStripButton();
             groupBox2 = new GroupBox();
             splitContainer1 = new SplitContainer();
+            tableLayoutPanel1 = new TableLayoutPanel();
             richTextBox1 = new RichTextBox();
+            comboBox1 = new ComboBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
+            label1 = new Label();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
@@ -80,6 +84,8 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -89,7 +95,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, текстToolStripMenuItem, runToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(982, 33);
+            menuStrip1.Size = new Size(932, 33);
             menuStrip1.TabIndex = 15;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -274,7 +280,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripButton4, toolStripButton5, toolStripButton7, toolStripButton6, toolStripButton8, toolStripButton9, toolStripButton10, toolStripButton11 });
             toolStrip1.Location = new Point(0, 33);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(982, 33);
+            toolStrip1.Size = new Size(932, 33);
             toolStrip1.TabIndex = 16;
             toolStrip1.Text = "Создать";
             // 
@@ -396,7 +402,7 @@
             groupBox2.Location = new Point(0, 66);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(0);
-            groupBox2.Size = new Size(982, 645);
+            groupBox2.Size = new Size(932, 645);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             // 
@@ -409,24 +415,63 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(richTextBox1);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(dataGridView1);
-            splitContainer1.Size = new Size(982, 621);
+            splitContainer1.Panel2.Controls.Add(tableLayoutPanel2);
+            splitContainer1.Size = new Size(932, 621);
             splitContainer1.SplitterDistance = 414;
             splitContainer1.SplitterWidth = 12;
             splitContainer1.TabIndex = 0;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.83262F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.1673813F));
+            tableLayoutPanel1.Controls.Add(richTextBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(comboBox1, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(932, 414);
+            tableLayoutPanel1.TabIndex = 1;
+            // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(0, 0);
+            richTextBox1.Location = new Point(3, 3);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(982, 414);
+            richTextBox1.Size = new Size(766, 408);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
+            // 
+            // comboBox1
+            // 
+            comboBox1.Dock = DockStyle.Fill;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(775, 3);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(154, 33);
+            comboBox1.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutPanel2.Controls.Add(label1, 0, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            tableLayoutPanel2.Size = new Size(932, 195);
+            tableLayoutPanel2.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -434,11 +479,20 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(982, 195);
+            dataGridView1.Size = new Size(926, 143);
             dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(3, 149);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 1;
             // 
             // openFileDialog1
             // 
@@ -448,7 +502,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 711);
+            ClientSize = new Size(932, 711);
             Controls.Add(groupBox2);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
@@ -464,6 +518,9 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -515,5 +572,9 @@
         private SplitContainer splitContainer1;
         private RichTextBox richTextBox1;
         private DataGridView dataGridView1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private ComboBox comboBox1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label1;
     }
 }

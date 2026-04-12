@@ -38,7 +38,8 @@ namespace lab1_gui
             TokenType.Error => "Лексическая ошибка",
             TokenType.Const => "Ключевое слово const",
             TokenType.Integer => "Ключевое слово integer",
-
+            TokenType.Minus => "Арифметический символ (минус)",
+            TokenType.Plus => "Арифметический символ (плюс)",
         };
 
         public string Location => $"строка: {Line}, {StartPos}-{EndPos}";
