@@ -177,12 +177,24 @@ namespace lab1_gui
                         state = 8;
                         return;
                     }
+                    if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
+                    {
+                        state = 2;
+                        currentTokenIndex++;
+                        return;
+                    }
                     currentTokenIndex++;
                     SkipWhiteSpace();
                     token = GetCurrentToken();
                     if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
                     {
                         state = 2;
+                        return;
+                    }
+                    if (token != null && (token.Type == TokenType.Const))
+                    {
+                        state = 1;
+                        currentTokenIndex++;
                         return;
                     }
                     if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.IntDigit))
@@ -267,6 +279,7 @@ namespace lab1_gui
                     if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
                     {
                         state = 3;
+                        currentTokenIndex++;
                         return;
                     }
                 }
