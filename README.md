@@ -157,7 +157,7 @@ const asr34: integer = 425;
 
 6. \<Integer\> → “+”\<UnsignedInteger\>| “-”\<UnsignedInteger\> | digit \<UnsignedInteger\>
 
-7. \<UnsignedInteger\> → digit\<<UnsignedInteger\> | \<End\>
+7. \<UnsignedInteger\> → digit\<UnsignedInteger\> | \<End\>
 
 8. \<End\> → “;”
 
