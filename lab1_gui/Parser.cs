@@ -280,7 +280,7 @@ namespace lab1_gui
                     }
                     currentTokenIndex++;
                     token = GetCurrentToken();
-                    if (token != null && token.Type == TokenType.Id)
+                    if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.IntDigit))
                     {
                         state = 5;
                         return;

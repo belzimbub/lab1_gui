@@ -10,7 +10,7 @@ namespace lab1_gui
 {
     public partial class Form1 : Form
     {
-        private RegexClass regex;
+        //private RegexClass regex;
         TextEditor textEdit = new();
         Scanner scanner = new();
         Parser parser = new();
