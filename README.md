@@ -111,6 +111,7 @@ const asr34: integer = 425;
 
 3. Многострочный пример:
 <img width="986" height="758" alt="Image" src="https://github.com/user-attachments/assets/a3208e3f-f980-4679-9f8a-8a9738dbd3ce" />
+
 # Лабораторная работа 3. Разработка синтаксического анализатора (парсера)
 
 Цель: Изучить назначение и принципы работы синтаксического анализатора в структуре компилятора. Спроектировать грамматику, построить соответствующую схему метода анализа грамматики и выполнить программную реализацию парсера с нейтрализацией синтаксических ошибок методом Айронса. Интегрировать разработанный модуль в ранее созданный графический интерфейс языкового процессора. 
@@ -144,17 +145,29 @@ const asr34: integer = 425;
     3. "const N2_1: integer = +51;"
 
 Грамматика:
-    1. <Start> → “const” <BeginID> 
-    2. <BeginID> → letter<ID> | “_”<ID>
-    3. <ID> → letter<ID> | “_”<ID> | digit<ID> | “:” <Keyword>
-    4. <Keyword> → “integer”<Equal>
-    5. <Equal> → “=”<Integer>
-    6. <Integer> → [“+”| “-”]<UnsignedInteger>
-    7. <UnsignedInteger> → digit<UnsignedInteger> | digit<End>
-    8. <End> → “;”
+1. \<Start\> → “const” \<BeginID\> 
+
+2. \<BeginID\> → letter\<ID\> | “_”\<ID\>
+
+3. \<ID\> → letter\<ID\> | “_”\<ID\> | digit\<ID\> | “:” \<Keyword\>
+
+4. \<Keyword\> → “integer”\<Equal\>
+
+5. \<Equal\> → “=”\<Integer\>
+
+6. \<Integer\> → “+”\<UnsignedInteger\>| “-”\<UnsignedInteger\> | digit \<UnsignedInteger\>
+
+7. \<UnsignedInteger\> → digit\<<UnsignedInteger\> | \<End\>
+
+8. \<End\> → “;”
 
 Метод анализа:
-<img width="633" height="547" alt="изображение" src="https://github.com/user-attachments/assets/12f766f8-02d0-4100-97cc-30d98553b231" />
+
+<img width="702" height="547" alt="method_analysis drawio(4)" src="https://github.com/user-attachments/assets/11ee52a5-297e-455a-a1fe-1f5ef5d05ba7" />
+
+Диагностика и нейтрализация синтаксических ошибок:
+
+
 
 Тестовые примеры:
 <img width="929" height="744" alt="изображение" src="https://github.com/user-attachments/assets/1abb9617-1798-4c6c-acce-4c670c336d6d" />
