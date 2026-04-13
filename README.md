@@ -155,10 +155,10 @@ const asr34: integer = 425;
 
 5. \<Equal\> → “=”\<Integer\>
 
-6. \<Integer\> → “+”\<UnsignedInteger\>| “-”\<UnsignedInteger\> | digit \<UnsignedInteger\>
+6. \<Integer\> → “+”\<UnsignedInteger\>| “-”\<UnsignedInteger\> | digit\<End\> | digit\<UnsignedInteger\>
 
-7. \<UnsignedInteger\> → digit\<UnsignedInteger\> | \<End\>
-
+7. \<UnsignedInteger\> → digit\<UnsignedInteger\> | digit\<End\>
+  
 8. \<End\> → “;”
 
 Согласно классификации Хомского, грамматика G[Z] является автоматной. Правила относятся к классу праворекурсивных продукций (A → aB | a | ε).
