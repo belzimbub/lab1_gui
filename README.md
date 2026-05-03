@@ -273,7 +273,7 @@ const asr34: integer = 425;
 
 
 
-## Тестовые примеры
+## Тестовые примеры:
 
 <img width="929" height="744" alt="изображение" src="https://github.com/user-attachments/assets/fe3b4906-ce6c-4d1f-b44c-5cc66cb68272" />
 
