@@ -279,7 +279,9 @@ const asr34: integer = 425;
 
 - IntLiteralNode (значение константы). Атрибуты: значение (value).
 
-<img width="571" height="381" alt="ast drawio" src="https://github.com/user-attachments/assets/920b3506-2c44-4944-b7f9-1da6014733f7" />
+
+<img width="571" height="361" alt="ast drawio(1)" src="https://github.com/user-attachments/assets/5459bf1f-fb1a-4fc8-a6c4-ef9e5dfa22a9" />
+
 
 В программе используется формат вывода AST, похожий на tree в командной строке (с отступами и символами ├── и └──).
 
