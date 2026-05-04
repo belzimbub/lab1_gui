@@ -271,7 +271,17 @@ const asr34: integer = 425;
 
 ## Структура AST:
 
+- ProgramNode (корневой узел). Атрибуты: Количество объявленных констант ConstDeclNode,
 
+- ConstDeclNode (объявление константы). Атрибуты: Имя константы, Модификатор ("const"), Тип данных (IntNode), Значение константы (IntLiteralNode),
+
+- IntNode (тип данных). Атрибуты: Название ("integer"),
+
+- IntLiteralNode (значение константы). Атрибуты: значение (value).
+
+<img width="571" height="381" alt="ast drawio" src="https://github.com/user-attachments/assets/920b3506-2c44-4944-b7f9-1da6014733f7" />
+
+В программе используется формат вывода AST, похожий на tree в командной строке (с отступами и символами ├── и └──).
 
 ## Тестовые примеры:
 
