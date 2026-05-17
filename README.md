@@ -327,7 +327,10 @@ const asr34: integer = 425;
 <img width="1205" height="583" alt="изображение" src="https://github.com/user-attachments/assets/df5e3512-9226-4624-a6ec-af83199e7bdd" />
 
 ### Построение CFG
-
+<img width="518" height="75" alt="изображение" src="https://github.com/user-attachments/assets/ad5d4a39-1396-4613-b0b9-4d455165ccdf" />
+<img width="493" height="39" alt="изображение" src="https://github.com/user-attachments/assets/dd66c2b5-0454-447e-bf30-ccac1c5c7863" />
+<img width="659" height="159" alt="изображение" src="https://github.com/user-attachments/assets/0ce3490c-6934-4e8c-b549-eb593f5bc29a" />
+<img width="285" height="136" alt="изображение" src="https://github.com/user-attachments/assets/e6547c66-9623-436b-b6a9-96b96f178916" />
 
 ## Индивидуальное задание
 
