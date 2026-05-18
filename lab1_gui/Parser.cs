@@ -89,10 +89,7 @@ namespace lab1_gui
                             break;
                     }
                 }
-                if (errors.Count == 0)
-                {
-                    ValidateEndOfInput();
-                }
+                ValidateEndOfInput();
             }
             else
             {
@@ -155,7 +152,6 @@ namespace lab1_gui
 
         private void state1()
         {
-            SkipWhiteSpace();
             Token token = GetCurrentToken();
             if (token != null && token.Type == TokenType.Const)
             {
@@ -164,14 +160,15 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается ключевое слово 'const'.", token != null ? token.Value : null, token);
+                if (token.Type != TokenType.Error) handleError("Ожидается ключевое слово 'const'.", token != null ? token.Value : null, token);
+                else if (token != null && token.Type == TokenType.Error)
+                {
+                    handleError("Ожидается ключевое слово 'const'.", token.Value, token);
+                    currentTokenIndex++;
+                    return;
+                }
                 while (currentTokenIndex < tokens.Count)
                 {
-                    if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.IntDigit))
-                    {
-                        state = 2;
-                        return;
-                    }
                     if (token != null && token.Type == TokenType.EndOperator)
                     {
                         state = 8;
@@ -179,12 +176,11 @@ namespace lab1_gui
                     }
                     if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
                     {
-                        state = 2;
+                        state = 1;
                         currentTokenIndex++;
                         return;
                     }
                     currentTokenIndex++;
-                    SkipWhiteSpace();
                     token = GetCurrentToken();
                     if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
                     {
@@ -197,8 +193,9 @@ namespace lab1_gui
                         currentTokenIndex++;
                         return;
                     }
-                    if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.IntDigit))
+                    if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.WhiteSpace || token.Type == TokenType.IntDigit))
                     {
+                        currentTokenIndex++;
                         state = 2;
                         return;
                     }
@@ -217,7 +214,7 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается идентификатор.", token != null ? token.Value : null, token);
+                if (token.Type != TokenType.Error) handleError("Ожидается идентификатор.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && token.Type == TokenType.Id)
@@ -253,7 +250,7 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается двоеточие ':'.", token != null ? token.Value : null, token);
+                if (token.Type!=TokenType.Error) handleError("Ожидается двоеточие ':'.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && token.Type == TokenType.Integer)
@@ -298,7 +295,7 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается ключевое слово 'integer'.", token != null ? token.Value : null, token);
+                if (token.Type != TokenType.Error) handleError("Ожидается ключевое слово 'integer'.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && token.Type == TokenType.Equal)
@@ -319,16 +316,6 @@ namespace lab1_gui
                         state = 4;
                         return;
                     }
-                    if (token != null && (token.Type == TokenType.Id || token.Type == TokenType.IntDigit))
-                    {
-                        state = 5;
-                        return;
-                    }
-                    if (token != null && (token.Type == TokenType.Minus || token.Type == TokenType.Plus))
-                    {
-                        state = 4;
-                        return;
-                    }
                 }
             }
         }
@@ -344,7 +331,7 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается знак '='.", token != null ? token.Value : null, token);
+                if (token.Type != TokenType.Error) handleError("Ожидается знак '='.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && token.Type == TokenType.IntDigit)
@@ -405,7 +392,7 @@ namespace lab1_gui
             }
             else
             {
-                handleError("Ожидается целое число.", token != null ? token.Value : null, token);
+                if (token.Type != TokenType.Error) handleError("Ожидается целое число.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
                     if (token != null && (token.Type == TokenType.EndOperator))
@@ -461,7 +448,12 @@ namespace lab1_gui
             grid.Columns.Clear();
             grid.Rows.Clear();
             label.Text = "";
-
+            editor.SelectionStart = 0;
+            editor.SelectionLength = editor.TextLength;
+            editor.Focus();
+            editor.SelectionBackColor = Color.White;
+            editor.SelectionStart = 0;
+            editor.SelectionLength = 0;
             if (errors.Count > 0)
             {
                 grid.AllowUserToAddRows = false;
@@ -480,8 +472,8 @@ namespace lab1_gui
                 grid.Columns["Location"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 grid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                grid.CellClick -= (s, e) => OnErrorCellClick(s, e, editor);
-                grid.CellClick += (s, e) => OnErrorCellClick(s, e, editor);
+                //grid.CellClick -= (s, e) => OnErrorCellClick(s, e, editor);
+                //grid.CellClick += (s, e) => OnErrorCellClick(s, e, editor);
 
                 foreach (ParseError error in errors)
                 {

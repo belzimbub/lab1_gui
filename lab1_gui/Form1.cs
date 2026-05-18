@@ -26,28 +26,7 @@ namespace lab1_gui
             Parser parser = new();
             List<Token> tokens = scanner.Analyze(richTextBox1.Text);
             parser.Parse(tokens);
-            if (parser.GetErrors().Count == 0)
-            {
-                SemanticAnalyzer semanticAnalyzer = new();
-                ProgramNode ast = semanticAnalyzer.Analyze(tokens);
-
-                if (semanticAnalyzer.HasErrors())
-                {
-                    semanticAnalyzer.DisplaySemanticErrors(semanticAnalyzer.GetSemanticErrors(), dataGridView1, label1);
-                }
-                else
-                {
-                    dataGridView1.Columns.Clear();
-                    dataGridView1.Rows.Clear();
-                    label1.Text = "";
-                    AstForm astForm = new AstForm(ast);
-                    astForm.ShowDialog();
-                }
-            }
-            else
-            {
-                parser.Display(dataGridView1, label1, richTextBox1);
-            }
+             parser.Display(dataGridView1, label1, richTextBox1);
         }
         private void textBox_TextChanged(object sender, EventArgs e)
         {
