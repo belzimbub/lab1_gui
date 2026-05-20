@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\doc.html" />
+    <None Remove="Resources\manual.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\doc.html" />
+    <EmbeddedResource Include="Resources\manual.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -1,6 +1,7 @@
 ﻿using lab_compilator;
 using System.Data;
 using System.Diagnostics;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
@@ -13,7 +14,7 @@ namespace lab1_gui
     public partial class Form1 : Form
     {
         TextEditor textEdit = new();
-
+        private string tempHtmlFile = null;
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace lab1_gui
             Parser parser = new();
             List<Token> tokens = scanner.Analyze(richTextBox1.Text);
             parser.Parse(tokens);
-             parser.Display(dataGridView1, label1, richTextBox1);
+            parser.Display(dataGridView1, label1, richTextBox1);
         }
         private void textBox_TextChanged(object sender, EventArgs e)
         {
@@ -41,6 +42,14 @@ namespace lab1_gui
             else
             {
                 e.Cancel = true;
+            }
+            if (!string.IsNullOrEmpty(tempHtmlFile) && System.IO.File.Exists(tempHtmlFile))
+            {
+                try
+                {
+                    System.IO.File.Delete(tempHtmlFile);
+                }
+                catch { /* Игнорируем ошибки удаления */ }
             }
         }
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,7 +148,7 @@ namespace lab1_gui
 
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            About.AboutInstructions();
+            AboutInstructions();
         }
 
         private void toolStripButton11_Click(object sender, EventArgs e)
@@ -149,9 +158,54 @@ namespace lab1_gui
 
         private void manualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            About.AboutInstructions();
+            AboutInstructions();
         }
+        private void AboutInstructions()
+        {
+            try
+            {
+                string resourceName = "lab1_gui.Resources.manual.html";
+                Assembly assembly = Assembly.GetExecutingAssembly();
 
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null)
+                    {
+                        string[] resources = assembly.GetManifestResourceNames();
+                        MessageBox.Show($"Ресурс не найден!\nДоступные: {string.Join("\n", resources)}",
+                                      "Ошибка");
+                        return;
+                    }
+
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string htmlContent = reader.ReadToEnd();
+                        string tempFile = Path.Combine(Path.GetTempPath(), $"help_{Guid.NewGuid()}.html");
+                        System.IO.File.WriteAllText(tempFile, htmlContent);
+
+                        // Открываем в системном браузере по умолчанию (еще проще)
+                        System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = tempFile,
+                            UseShellExecute = true  // БЕЗ ЭТОГО НЕ РАБОТАЕТ!
+                        };
+                        System.Diagnostics.Process.Start(psi);
+
+                        // Удалим файл через 5 секунд (асинхронно)
+                        System.Threading.Timer timer = null;
+                        timer = new System.Threading.Timer(_ =>
+                        {
+                            try { if (System.IO.File.Exists(tempFile)) System.IO.File.Delete(tempFile); } catch { }
+                            timer?.Dispose();
+                        }, null, 5000, Timeout.Infinite);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             Run();
@@ -191,6 +245,53 @@ namespace lab1_gui
         private void literatureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1. Шорников Ю.В. Теория и практика языковых процессоров : учеб. пособие / Ю.В. Шорников. – Новосибирск: Изд-во НГТУ, 2004.]\n\n2. Gries D.Designing Compilers for Digital Computers. New York, Jhon Wiley, 1971. 493 p.\n\n3. Теория формальных языков и компиляторов[Электронный ресурс] / Электрон.дан.URL: https://dispace.edu.nstu.ru/didesk/course/show/8594, свободный. Яз.рус. (дата обращения 01.04.2021).", "Список литературы", MessageBoxButtons.OK);
+        }
+
+        private void codeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string resourceName = "lab1_gui.Resources.doc.html";
+                Assembly assembly = Assembly.GetExecutingAssembly();
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null)
+                    {
+                        string[] resources = assembly.GetManifestResourceNames();
+                        MessageBox.Show($"Ресурс не найден!\nДоступные: {string.Join("\n", resources)}",
+                                      "Ошибка");
+                        return;
+                    }
+
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string htmlContent = reader.ReadToEnd();
+                        string tempFile = Path.Combine(Path.GetTempPath(), $"help_{Guid.NewGuid()}.html");
+                        System.IO.File.WriteAllText(tempFile, htmlContent);
+
+                        // Открываем в системном браузере по умолчанию (еще проще)
+                        System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = tempFile,
+                            UseShellExecute = true  // БЕЗ ЭТОГО НЕ РАБОТАЕТ!
+                        };
+                        System.Diagnostics.Process.Start(psi);
+
+                        // Удалим файл через 5 секунд (асинхронно)
+                        System.Threading.Timer timer = null;
+                        timer = new System.Threading.Timer(_ =>
+                        {
+                            try { if (System.IO.File.Exists(tempFile)) System.IO.File.Delete(tempFile); } catch { }
+                            timer?.Dispose();
+                        }, null, 5000, Timeout.Infinite);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
     }
 }

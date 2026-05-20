@@ -36,7 +36,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.method_analysis_drawio_6_;
+            pictureBox1.BackgroundImage = Properties.Resources.method_analysis_drawio_5_;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";

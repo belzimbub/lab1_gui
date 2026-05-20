@@ -250,6 +250,7 @@
             codeToolStripMenuItem.Name = "codeToolStripMenuItem";
             codeToolStripMenuItem.Size = new Size(341, 34);
             codeToolStripMenuItem.Text = "Исходный код программы";
+            codeToolStripMenuItem.Click += codeToolStripMenuItem_Click;
             // 
             // runToolStripMenuItem
             // 

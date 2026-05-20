@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics.Eventing.Reader;
 
 namespace lab1_gui
 {
@@ -89,7 +90,7 @@ namespace lab1_gui
                             break;
                     }
                 }
-                if (errors.Count == 0) ValidateEndOfInput();
+                if (errors.Count==0) ValidateEndOfInput();
             }
             else
             {
@@ -293,7 +294,7 @@ namespace lab1_gui
                     }
                     if (token != null && token.Type == TokenType.Id)
                     {
-                        state = 3;
+                        state = 5;
                         currentTokenIndex++;
                         return;
                     }
@@ -319,25 +320,23 @@ namespace lab1_gui
                 handleError("Ожидается ключевое слово 'integer'.", token != null ? token.Value : null, token);
                 while (currentTokenIndex < tokens.Count)
                 {
+                    if (token != null && token.Type == TokenType.EndOperator)
+                    {
+                        state = 8;
+                        return;
+                    }
+                    if (token.Type == TokenType.Id)
+                    {
+                        SkipWhiteSpace();
+                        currentTokenIndex++;
+                        if (currentTokenIndex < tokens.Count) token = GetCurrentToken();
+                    }
                     if (token.Type == TokenType.Equal || token.Type == TokenType.Plus || token.Type == TokenType.Minus
-                        || token.Type == TokenType.Error || token.Type == TokenType.IntDigit)
+                        || token.Type == TokenType.Error)
                     {
                         SkipWhiteSpace();
                         currentTokenIndex++;
                         token = GetCurrentToken();
-                        if (token.Type == TokenType.Integer || token.Type == TokenType.Id)
-                        {
-                            currentTokenIndex++;
-                            SkipWhiteSpace();
-                            state = 5;
-                            return;
-                        }
-                    }
-                    else if (token.Type == TokenType.Const || token.Type == TokenType.Id)
-                    {
-                        currentTokenIndex++;
-                        state = 5;
-                        return;
                     }
                     if (token != null && token.Type == TokenType.Integer)
                     {
@@ -345,7 +344,24 @@ namespace lab1_gui
                         return;
                     }
                     currentTokenIndex++;
+                    SkipWhiteSpace();
                     token = GetCurrentToken();
+                    if (token != null && token.Type == TokenType.Equal)
+                    {
+                        currentTokenIndex++;
+                        state = 6;
+                        return;
+                    }
+                    if (token != null && (token.Type == TokenType.Plus || token.Type == TokenType.Minus))
+                    {
+                        state = 5;
+                        return;
+                    }
+                    if (token != null && token.Type == TokenType.IntDigit)
+                    {
+                        state = 5;
+                        return;
+                    }
                     if (token != null && token.Type == TokenType.EndOperator)
                     {
                         state = 8;
@@ -446,7 +462,11 @@ namespace lab1_gui
         private void state8()
         {
             SkipWhiteSpace();
+            currentTokenIndex--;
             Token token = GetCurrentToken();
+            int thisline = token.Line;
+            currentTokenIndex++;
+            token = GetCurrentToken();
             if (token != null && token.Type == TokenType.EndOperator)
             {
                 currentTokenIndex++;
@@ -456,26 +476,26 @@ namespace lab1_gui
             else
             {
                 handleError("Ожидается знак ';'.", token != null ? token.Value : null, token);
-                if (currentTokenIndex < tokens.Count)
+                while (currentTokenIndex < tokens.Count)
                 {
-                    currentTokenIndex--;
-                    token = GetCurrentToken();
-                    int thisline = token.Line;
+                    if (token != null && token.Type == TokenType.EndOperator)
+                    {
+                        state = 8;
+                        return;
+                    }
                     currentTokenIndex++;
                     token = GetCurrentToken();
-                    while (token.Line <= thisline)
+                    if (token != null && token.Type == TokenType.Id)
                     {
-                        currentTokenIndex++;
-                        token = GetCurrentToken();
+                        if (token.Line > thisline)
+                        {
+                            currentTokenIndex++;
+                        }
+                        return;
                     }
-                    state = 1;
-                    return;
                 }
-                else
-                {
-                    state = 9;
-                    return;
-                }
+                state = 9;
+                return;
             }
         }
 
@@ -518,8 +538,8 @@ namespace lab1_gui
                 grid.Columns["Location"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 grid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                //grid.CellClick -= (s, e) => OnErrorCellClick(s, e, editor);
-                //grid.CellClick += (s, e) => OnErrorCellClick(s, e, editor);
+                grid.CellClick -= (s, e) => OnErrorCellClick(s, e, editor);
+                grid.CellClick += (s, e) => OnErrorCellClick(s, e, editor);
 
                 foreach (ParseError error in errors)
                 {
@@ -543,7 +563,10 @@ namespace lab1_gui
         {
             if (e.RowIndex < 0 || e.RowIndex >= errors.Count)
                 return;
-
+            editor.SelectAll();
+            editor.SelectionBackColor = Color.White;
+            editor.SelectionStart = 0;
+            editor.SelectionLength = 0;
             ParseError error = errors[e.RowIndex];
             Token errorToken = GetTokenAtPosition(error.StartPos);
             if (errorToken != null)
